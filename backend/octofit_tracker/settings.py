@@ -19,21 +19,20 @@ CODESPACE_NAME = os.environ.get("CODESPACE_NAME")
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "[::1]",
 ]
 if CODESPACE_NAME:
     ALLOWED_HOSTS.append(f"{CODESPACE_NAME}-8000.app.github.dev")
 
 # Ensure DRF API links use Codespaces URL if present
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+    'URL_FORMAT_OVERRIDE': None,
+}
 if CODESPACE_NAME:
-    REST_FRAMEWORK = {
-        'DEFAULT_RENDERER_CLASSES': [
-            'rest_framework.renderers.JSONRenderer',
-            'rest_framework.renderers.BrowsableAPIRenderer',
-        ],
-        'URL_FORMAT_OVERRIDE': None,
-        'SCHEMA_URL': f"https://{CODESPACE_NAME}-8000.app.github.dev/api/"
-    }
+    REST_FRAMEWORK['SCHEMA_URL'] = f"https://{CODESPACE_NAME}-8000.app.github.dev/api/"
 
 
 INSTALLED_APPS = [
