@@ -24,6 +24,12 @@ class LeaderboardViewSet(viewsets.ModelViewSet):
     queryset = Leaderboard.objects.all()
     serializer_class = LeaderboardSerializer
 
+    def get_view_name(self):
+        return "leaderboard"
+
+    def get_view_description(self, html_escape=True):
+        return "leaderboard"
+
 class WorkoutViewSet(viewsets.ModelViewSet):
     queryset = Workout.objects.all()
     serializer_class = WorkoutSerializer
