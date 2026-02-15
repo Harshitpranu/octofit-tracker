@@ -9,6 +9,7 @@ DEBUG = True
 CODESPACE_NAME = os.environ.get("CODESPACE_NAME")
 
 ALLOWED_HOSTS = [
+    # Codespaces: allow the public URL for this codespace
     "localhost",
     "127.0.0.1",
     "[::1]",
