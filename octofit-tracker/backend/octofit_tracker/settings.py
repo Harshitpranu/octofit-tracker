@@ -25,7 +25,21 @@ SECRET_KEY = 'django-insecure-p=-y#045)*0%8u(z8fe4lkia*#uu!hl$uv%%cin30ci1k%k&8^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+
+import os
+CODESPACE_NAME = os.environ.get('CODESPACE_NAME')
+if CODESPACE_NAME:
+    ALLOWED_HOSTS = [f"{CODESPACE_NAME}-8000.app.github.dev"]
+else:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+# Application definition
+
+REST_FRAMEWORK = {
+    # Optionally set SCHEMA_URL for Codespaces
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+}
+if CODESPACE_NAME:
+    REST_FRAMEWORK['SCHEMA_URL'] = f"https://{CODESPACE_NAME}-8000.app.github.dev/api/"
 
 
 # Application definition
