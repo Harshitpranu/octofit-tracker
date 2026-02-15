@@ -13,7 +13,10 @@ def api_root(request, format=None):
 		'workouts': request.build_absolute_uri('workouts/'),
 	})
 
+from django.views.generic import RedirectView
+
 urlpatterns = [
+	path('', RedirectView.as_view(url='/api/', permanent=False)),
 	path('api/', api_root, name='api-root'),
 	# path('api/users/', ...),
 	# path('api/teams/', ...),
