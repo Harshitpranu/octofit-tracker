@@ -1,10 +1,15 @@
 from django.urls import path, include
 
+
 from rest_framework.routers import DefaultRouter
+from .serializers import UserViewSet, TeamViewSet, ActivityViewSet, LeaderboardViewSet, WorkoutViewSet
 
 router = DefaultRouter()
- # Register your viewsets here if needed, e.g.:
- # router.register(r'users', UserViewSet)
+router.register(r'users', UserViewSet)
+router.register(r'teams', TeamViewSet)
+router.register(r'activities', ActivityViewSet)
+router.register(r'leaderboards', LeaderboardViewSet)
+router.register(r'workouts', WorkoutViewSet)
 
 from django.views.generic import RedirectView
 
