@@ -5,3 +5,4 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/api/', permanent=False)),
     path('api/', include('octofit_tracker.urls')),
 ]
+

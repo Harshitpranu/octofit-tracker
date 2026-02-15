@@ -2,7 +2,6 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from django.views.generic import RedirectView
 
-# ✅ ONLY RELATIVE IMPORT – yahin se views aayega
 from .views import (
     UserViewSet,
     TeamViewSet,
@@ -12,13 +11,13 @@ from .views import (
 )
 
 router = DefaultRouter()
-router.register(r'users', UserViewSet)
-router.register(r'teams', TeamViewSet)
-router.register(r'activities', ActivityViewSet)
-router.register(r'leaderboards', LeaderboardViewSet)
-router.register(r'workouts', WorkoutViewSet)
+router.register(r"users", UserViewSet)
+router.register(r"teams", TeamViewSet)
+router.register(r"activities", ActivityViewSet)
+router.register(r"leaderboards", LeaderboardViewSet)
+router.register(r"workouts", WorkoutViewSet)
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='/api/', permanent=False)),
-    path('api/', include(router.urls)),
+    path("", RedirectView.as_view(url="/api/", permanent=False)),
+    path("api/", include(router.urls)),
 ]
