@@ -13,8 +13,9 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "[::1]",
-    f"{CODESPACE_NAME}-8000.app.github.dev" if CODESPACE_NAME else "*",
 ]
+if CODESPACE_NAME:
+    ALLOWED_HOSTS.append(f"{CODESPACE_NAME}-8000.app.github.dev")
 
 INSTALLED_APPS = [
     'django.contrib.admin',
