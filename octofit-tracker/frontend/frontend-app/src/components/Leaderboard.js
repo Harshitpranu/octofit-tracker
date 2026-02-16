@@ -1,19 +1,20 @@
 
+
 import React, { useEffect, useState } from 'react';
 const API_URL = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/`;
 
-const Leaderboard = () => {
-  const [leaderboard, setLeaderboard] = useState([]);
+export default function Leaderboard() {
+  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     console.log("API URL:", API_URL);
     fetch(API_URL)
       .then(res => res.json())
-      .then(json => {
-        console.log("Fetched data:", json);
-        const results = json.results || json;
-        setLeaderboard(results);
+      .then(data => {
+        const items = data.results || data;
+        console.log("Fetched data:", items);
+        setItems(items);
         setLoading(false);
       })
       .catch(err => {
@@ -32,15 +33,15 @@ const Leaderboard = () => {
           <table className="table table-striped table-bordered">
             <thead className="table-primary">
               <tr>
-                {leaderboard.length > 0 && Object.keys(leaderboard[0]).map((key) => (
+                {items.length > 0 && Object.keys(items[0]).map((key) => (
                   <th key={key}>{key}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {leaderboard.map((entry, idx) => (
-                <tr key={entry.id || idx}>
-                  {Object.values(entry).map((val, i) => (
+              {items.map((item, idx) => (
+                <tr key={item.id || idx}>
+                  {Object.values(item).map((val, i) => (
                     <td key={i}>{typeof val === 'object' ? JSON.stringify(val) : val}</td>
                   ))}
                 </tr>
@@ -51,6 +52,4 @@ const Leaderboard = () => {
       </div>
     </div>
   );
-};
-
-export default Leaderboard;
+}

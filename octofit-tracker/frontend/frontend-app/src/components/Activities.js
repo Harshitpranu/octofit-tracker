@@ -1,19 +1,20 @@
 
+
 import React, { useEffect, useState } from 'react';
 const API_URL = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/activities/`;
 
-const Activities = () => {
-  const [activities, setActivities] = useState([]);
+export default function Activities() {
+  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     console.log("API URL:", API_URL);
     fetch(API_URL)
       .then(res => res.json())
-      .then(json => {
-        console.log("Fetched data:", json);
-        const results = json.results || json;
-        setActivities(results);
+      .then(data => {
+        const items = data.results || data;
+        console.log("Fetched data:", items);
+        setItems(items);
         setLoading(false);
       })
       .catch(err => {
@@ -32,15 +33,15 @@ const Activities = () => {
           <table className="table table-striped table-bordered">
             <thead className="table-primary">
               <tr>
-                {activities.length > 0 && Object.keys(activities[0]).map((key) => (
+                {items.length > 0 && Object.keys(items[0]).map((key) => (
                   <th key={key}>{key}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {activities.map((activity, idx) => (
-                <tr key={activity.id || idx}>
-                  {Object.values(activity).map((val, i) => (
+              {items.map((item, idx) => (
+                <tr key={item.id || idx}>
+                  {Object.values(item).map((val, i) => (
                     <td key={i}>{typeof val === 'object' ? JSON.stringify(val) : val}</td>
                   ))}
                 </tr>
@@ -51,6 +52,4 @@ const Activities = () => {
       </div>
     </div>
   );
-};
-
-export default Activities;
+}
