@@ -21,16 +21,33 @@ const Workouts = () => {
       });
   }, [endpoint]);
 
-  if (loading) return <div>Loading workouts...</div>;
+  if (loading) return <div className="text-center my-4">Loading workouts...</div>;
 
   return (
-    <div>
-      <h2>Workouts</h2>
-      <ul>
-        {workouts.map((workout, idx) => (
-          <li key={workout.id || idx}>{JSON.stringify(workout)}</li>
-        ))}
-      </ul>
+    <div className="card shadow-sm mb-4">
+      <div className="card-body">
+        <h2 className="card-title mb-4">Workouts</h2>
+        <div className="table-responsive">
+          <table className="table table-striped table-bordered">
+            <thead className="table-primary">
+              <tr>
+                {workouts.length > 0 && Object.keys(workouts[0]).map((key) => (
+                  <th key={key}>{key}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {workouts.map((workout, idx) => (
+                <tr key={workout.id || idx}>
+                  {Object.values(workout).map((val, i) => (
+                    <td key={i}>{typeof val === 'object' ? JSON.stringify(val) : val}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
