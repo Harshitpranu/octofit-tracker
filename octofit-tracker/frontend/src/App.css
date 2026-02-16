@@ -1,0 +1,154 @@
+
+/* App layout and spacing */
+
+
+.App {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+  color: #1e293b;
+}
+
+
+
+main.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #f9fafb;
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px rgba(13,110,253,0.10);
+}
+
+/* Card enhancements */
+
+
+.card {
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+  border: none;
+  box-shadow: 0 2px 8px rgba(13,110,253,0.10);
+  background: #fff;
+}
+.card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2563eb;
+  letter-spacing: 0.5px;
+}
+
+/* Table enhancements */
+
+
+.table {
+  margin-bottom: 0;
+  background: #f1f5f9;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.table th, .table td {
+  vertical-align: middle;
+  font-size: 1rem;
+  color: #334155;
+}
+.table-primary th {
+  background-color: #2563eb !important;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #e0e7ff;
+}
+
+/* Navbar custom */
+
+
+.octofit-navbar {
+  background: linear-gradient(90deg, #2563eb 60%, #0ea5e9 100%) !important;
+  box-shadow: 0 2px 8px rgba(13,110,253,0.12);
+}
+.navbar-brand {
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff !important;
+  display: flex;
+  align-items: center;
+}
+.navbar-brand img {
+  margin-right: 0.75rem;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(13,110,253,0.10);
+}
+.navbar-nav .nav-link {
+  color: #e0e7ff !important;
+  font-weight: 500;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  transition: color 0.2s;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+.navbar-nav .nav-link.active, .navbar-nav .nav-link:focus, .navbar-nav .nav-link:hover {
+  font-weight: 700;
+  color: #fff !important;
+  background: #0ea5e9;
+  text-decoration: none;
+}
+
+/* General spacing */
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+.my-4 {
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+.py-4 {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+.btn-primary, .btn-primary:focus, .btn-primary:active {
+  background: linear-gradient(90deg, #2563eb 60%, #0ea5e9 100%);
+  border: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(13,110,253,0.10);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #0ea5e9;
+  color: #fff;
+}
+.btn {
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  padding: 0.5rem 1.25rem;
+}
+
+/* Welcome page */
+
+
+.display-4 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2563eb;
+}
+.lead {
+  font-size: 1.25rem;
+  color: #0ea5e9;
+}
+
+/* Link styling */
+a {
+  color: #2563eb;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover, a:focus {
+  color: #0ea5e9;
+  text-decoration: underline;
+}
+
+/* Favicon is set in public/index.html using favicon.ico */
